@@ -1,0 +1,69 @@
+version: "3.1"
+
+stories:
+
+- story: Inicio da Conversa
+  steps:
+  - intent: saudacao
+  - action: utter_saudacao
+  - intent: solicita_agendamento
+  - checkpoint: fim_saudacao
+
+- story: Descrição do quarto de Hospedagem
+  steps:
+  - checkpoint: fim_saudacao
+  - action: utter_solicita_agendamento
+  - intent: descricao_agendamento
+    entities:
+    - tipo_quarto: duplo
+  - slot_was_set:
+    - tipo_quarto_cliente: duplo
+  - action: utter_descricao_agendamento
+  - checkpoint: checar_agendamento 
+
+- story: Quarto Correto
+  steps:
+  - checkpoint: checar_agendamento 
+  - intent: afirmacao
+  - checkpoint: solicita_mes_consulta
+
+- story: Quarto Incorreto
+  steps:
+  - checkpoint: checar_agendamento
+  - intent: negacao
+  - checkpoint: fim_saudacao
+
+- story: Solicita dia da Hospedagem
+  - checkpoint: solicita_mes_consulta
+  - action: utter_solicita_data
+  - intent: data_hospedagem
+    entities:
+    - data: '5 a 10 de novembro'
+  - slot_was_set:
+    - data_hospedagem_cliente: '5 a 10 de novembro'
+  - action: utter_data_hospedagem
+  - checkpoint: checar_reserva
+  
+- story: Reserva Correta
+  steps:
+  - checkpoint: checar_reserva
+  - intent: afirmacao
+  - action: utter_finalizacao_reserva
+
+- story: Reserva Incorreta
+  steps:
+  - checkpoint: checar_reserva
+  - intent: negacao
+  - action: solicita_mes_consulta
+
+- story: Status da Reserva
+  steps:
+  - intent: status_reserva
+  - action: utter_status_reserva
+  - intent: id_reserva
+    entities:
+    - num_reserva: '98765'
+  - slot_was_set:
+    - num_reserva_cliente: '98765'
+  - action: utter_id_reserva
+

@@ -1,0 +1,65 @@
+version: '3.1'
+intents:
+- saudacao
+- solicita_agendamento
+- descricao_agendamento
+- endereco_paciente
+- status_agendamento
+- info_paciente
+- agradecimento
+- afirmacao
+- negacao
+entities:
+- num_consulta
+- especialidade
+- mes
+slots:
+  solicita_agendamento:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: especialidade
+  num_consulta_paciente:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: num_consulta
+  descricao_agendamento:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_text
+      intent: info_paciente
+responses:
+  utter_saudacao:
+  - text: Olá e seja bem-vindo! Como posso ajudá-lo?
+  utter_solicita_agendamento:
+  - text: Certo, deseja agendar consulta em qual especialidade?
+  utter_descricao_agendamento:
+  - text: Entendido, você deseja agendar com a especilidade {especialidade}, correto?
+  utter_endereco_paciente:
+  - text: Sua consulta está marcada no mês de {mes}. Obrigado!
+  utter_status_agendamento:
+  - text: Por favor, me passe suas informações (Nome, idade, CPF)?
+  utter_info_paciente:
+  - text: Seu agendamento com o número {num_consulta_cliente} está confirmada.
+  utter_finalizacao:
+  - text: Seu agendamento foi realizada com sucesso. Obrigado pela preferência!
+  utter_corrigir_reserva:
+  - text: Por favor, qual tipo de especialidade você gostaria?
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+- utter_saudacao
+- utter_solicita_agendamento
+- utter_descricao_agendamento
+- utter_endereco_paciente
+- utter_status_agendamento
+- utter_info_paciente
+- utter_finalizacao
+- utter_corrigir_reserva

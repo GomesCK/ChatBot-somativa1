@@ -1,0 +1,10 @@
+[
+  {
+    "name": "num_pedido",
+    "pattern": "\\d{5}"
+  },
+  {
+    "name": "borda",
+    "pattern": "(\\bcom\\ borda\\b|\\bsem\\ borda\\b|\\bc/\\ borda\\b|\\bs/\\ borda\\b)"
+  }
+]
