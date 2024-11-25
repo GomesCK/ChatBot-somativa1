@@ -1,0 +1,109 @@
+version: "3.1"
+nlu:
+- intent: saudacao
+  examples: |
+    - hey
+    - olá
+    - oi
+    - bom dia
+    - boa tarde
+    - boa noite
+    - fala meu chapa
+    - opa, tudo bem?
+    - salve
+    - eae
+
+- intent: solicita_agendamento
+  examples: |
+    - Gostaria de fazer um agendamento
+    - Quero agendar uma consulta
+    - Você pode anotar a minha consulta?
+    - Desejo fazer uma consulta
+    - Quero fazer um agendamento
+    - Você poderia me ajudar a agendar uma consulta?
+    - Pode me ajudar a realizar um agendamento?
+    - Anote a minha consulta
+    - Quero agendar!
+    - Como faço para agendar uma consulta?
+    - Quero realizar um agendamento, por favor
+
+- intent: descricao_agendamento
+  examples: |
+    - Quero um quarto [duplo](tipo_quarto)
+    - Precisamos de um [quarto família](tipo_quarto)
+    - Um [quarto standard](tipo_quarto), por favor
+    - Gostaria de um [quarto com vista](tipo_quarto)
+    - Um [suíte](tipo_quarto) com café da manhã incluso
+    - Um [quarto deluxe](tipo_quarto) para duas noites
+
+- intent: endereco_paciente
+  examples: |
+    - Quero reservar para [1º de outubro](data)
+    - Preciso de um quarto de [5 a 10 de novembro](data)
+    - A reserva é para [próxima sexta-feira](data)
+    - Quero agendar de [12 a 15 de dezembro](data)
+    - Pode reservar de [22 a 25 de janeiro](data)?
+
+- intent: status_agendamento
+  examples: |
+    - Qual o status da minha reserva?
+    - Minha reserva foi confirmada?
+    - Onde posso verificar minha reserva?
+    - Quero saber se minha hospedagem está garantida
+    - Minha reserva não aparece, o que aconteceu?
+
+- intent: info_paciente
+  examples: |
+    - O número da minha reserva é [789654](num_reserva)
+    - Minha reserva é a [12345](num_reserva)
+    - O número da reserva é [98765](num_reserva)
+    - Tenho uma reserva com o código [54321](num_reserva)
+
+- intent: agradecimento
+  examples: |
+    - Obrigado
+    - Valeu
+    - Valeu bot, você é demais
+    - Agradeço a ajuda
+    - Desde já agradeço
+    - vlw
+    - Muito obrigado pela ajuda
+    - você é fera
+    - tks
+    - Agradeço pelo atendimento
+
+- intent: afirmacao
+  examples: |
+    - sim
+    - yeap
+    - com certeza
+    - claro
+    - ok
+    - sem dúvidas
+    - yes
+    - é isso mesmo
+    - beleza
+    - blz
+
+- intent: negacao
+  examples: |
+    - Não
+    - não mesmo
+    - Nope
+    - No
+    - Nem
+    - Jamais
+    - Não foi isso que pedi
+    - não é esse o meu pedido
+    - negativo
+    - Não, não é isso que eu quero
+
+- regex: num_consulta
+  examples: |
+    - \d{5}
+- lookup: especialidade
+  examples: |
+    - com borda
+    - sem borda
+    - c/ borda
+    - s/ borda
